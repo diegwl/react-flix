@@ -28,6 +28,11 @@ body {
   font-family: sans-serif;
 }
 
+a{
+  color: #fff;
+  transition: all 0.3s;
+}
+
 .app{
   display: flex;
   width: 100%;
@@ -48,7 +53,11 @@ a:hover {
   a:hover {
     color: #747bff;
   }
+  a {
+    color: #000;
+    transition: all 0.3s;
+  }
   button {
-    background-color: #f9f9f9;
+    background-color: #d5d2d8;
   }
 }

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StyledFilmeInfo = styled.div`
     margin-top: 10px;

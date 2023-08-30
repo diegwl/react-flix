@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { StyledFilmeInfo, StyledImg, StyledSinopse, StyledSinopseTitle, StyledTitle, StyledButton, StyledButtonLink } from './styles'
 
 import { api, API_KEY } from '../../services/api'
+import { toast } from 'react-toastify';
 
 function Filme(){
     const { id } = useParams();
@@ -50,6 +51,24 @@ function Filme(){
         }
     }, [id, navigate]);
 
+    function salvarFilme() {
+        const minhaLista = localStorage.getItem('@reactflix');
+
+        let filmesSalvos = JSON.parse(minhaLista) || [];
+
+        const hasFilme = filmesSalvos.some((filmeSalvo) => filmeSalvo.id === filme.id)
+
+        if(hasFilme) {
+            toast.warn("Esse filme já está na sua lista!")
+            return;
+        }
+
+        filmesSalvos.push(filme);
+        localStorage.setItem("@reactflix", JSON.stringify(filmesSalvos));
+        toast.success("Filme salvo com sucesso!")
+        return;
+    }
+
     if(loading){
         return(
             <StyledFilmeInfo>
@@ -68,9 +87,9 @@ function Filme(){
             <strong>Avaliação: {filme.vote_average.toFixed(1)} / 10</strong>
 
             <div>
-                <StyledButton>Salvar</StyledButton>
+                <StyledButton onClick={salvarFilme}>Salvar</StyledButton>
                 <StyledButton>
-                    <StyledButtonLink target='blank' href={`https://www.youtube.com/watch?v=${trailer}`}>
+                    <StyledButtonLink target='blank' rel="external" href={`https://www.youtube.com/watch?v=${trailer}`}>
                         Trailer
                     </StyledButtonLink>
                 </StyledButton>
