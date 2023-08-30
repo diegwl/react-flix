@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import './styles.css'
+import { StyledErro, StyledTitle, StyledLink } from './styles'
 
 function Erro(){
     return(
-        <div className="not-found">
-            <h1>404</h1>
+        <StyledErro>
+            <StyledTitle>404</StyledTitle>
             <h2>Página não encontrada!</h2>
-            <Link to="/">Veja todos os filmes!</Link>
-        </div>
+            <StyledLink to="/">Veja todos os filmes!</StyledLink>
+        </StyledErro>
     )
 }
 

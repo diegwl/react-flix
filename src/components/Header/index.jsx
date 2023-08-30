@@ -1,12 +1,11 @@
-import './styles.css';
-import { Link } from 'react-router-dom'
+import { StyledHeader, StyledLogo, StyledFavoritos } from './styles';
 
 function Header(){
     return(
-        <header>
-            <Link className='logo' to={'/'}>React Flix</Link>
-            <Link className='favoritos' to={'/favoritos'}>Meus Filmes</Link>
-        </header>
+        <StyledHeader>
+            <StyledLogo to={'/'}>React Flix</StyledLogo>
+            <StyledFavoritos to={'/favoritos'}>Meus Filmes</StyledFavoritos>
+        </StyledHeader>
     )
 }
 

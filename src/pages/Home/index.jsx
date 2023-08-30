@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { api, API_KEY } from '../../services/api'
-import { Link } from 'react-router-dom'
-import './styles.css'
+import { StyledListaFilmes, StyledTitulo, StyledContainerTitulo, StyledFilme, StyledImagemFilme, StyledLinkFilme, StyledLoading } from './styles'
 
 function Home(){
     const [filmes, setFilmes] = useState([]);
@@ -28,27 +27,27 @@ function Home(){
 
     if(loading) {
         return(
-          <div className="loading">
+          <StyledLoading>
             <h2>Carregando Filmes...</h2>
-          </div>  
+          </StyledLoading>  
         )
     }
 
     return(
         <div className="container">
-            <div className="lista-filmes">
+            <StyledListaFilmes>
                 {filmes.map((filme) => {
                     return(
-                        <article key={filme.id}>
-                            <div className="title">
-                                <strong>{filme.title}</strong>
-                            </div>
-                            <img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.title} />
-                            <Link to={`/filme/${filme.id}`}>Acessar</Link>
-                        </article>
+                        <StyledFilme key={filme.id}>
+                            <StyledContainerTitulo>
+                                <StyledTitulo>{filme.title}</StyledTitulo>
+                            </StyledContainerTitulo>
+                            <StyledImagemFilme src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.title} />
+                            <StyledLinkFilme to={`/filme/${filme.id}`}>Acessar</StyledLinkFilme>
+                        </StyledFilme>
                     )
                 })}
-            </div>
+            </StyledListaFilmes>
         </div>
     )
 }
