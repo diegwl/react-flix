@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { StyledFilmeInfo, StyledImg, StyledSinopse, StyledSinopseTitle, StyledTitle, StyledButton, StyledButtonLink } from './styles'
+import { StyledFilmeInfo, StyledImg, StyledSinopse, StyledSinopseTitle, StyledTitle, StyledButton, StyledButtonLink, StyledLoading } from './styles'
 
 import { api, API_KEY } from '../../services/api'
 import { toast } from 'react-toastify';
@@ -71,9 +71,7 @@ function Filme(){
 
     if(loading){
         return(
-            <StyledFilmeInfo>
-                <h1>Carregando detalhes...</h1>
-            </StyledFilmeInfo>
+            <StyledLoading />
         )
     }
 

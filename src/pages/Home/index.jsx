@@ -27,9 +27,7 @@ function Home(){
 
     if(loading) {
         return(
-          <StyledLoading>
-            <h2>Carregando Filmes...</h2>
-          </StyledLoading>  
+          <StyledLoading /> 
         )
     }
 
